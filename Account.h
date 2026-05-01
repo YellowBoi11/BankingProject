@@ -6,6 +6,10 @@
  * Author: Luca Pendleton
 ************/
 
+#ifndef ACCOUNT_H
+#define ACCOUNT_H
+
+
 #include <string>
 
 using std::string;
@@ -14,7 +18,7 @@ class Account {
   private:
     string holder;
     string type;
-    int interest;
+    float interest;
     // Used always to edit things
     string password;
     double balance;
@@ -33,7 +37,10 @@ class Account {
 
     string getType() const;
 
-    string getIntrest() const;
+    float getIntrest() const;
+
+    // Requires password
+    float getBalance(const string& pass) const;
 
     // Setters 
     void setHolder(const string& inHolder);
@@ -44,14 +51,16 @@ class Account {
     // Other methods 
 
     // Will output info on the account.
-    void displayAccount() const;
+    void displayAccount(const string& pass) const;
 
     // Will calculate how much interest you get and add it to the balance.
-    void calculateInterest() const;
+    void calculateInterest(const int& numYears, const string& pass) const;
 
     // Deposits the money if it's positive
-    void deposit(const double& deposit);
+    void deposit(const double& deposit, const string& pass);
 
     // Withdraws the money if it's available. Returns the amount withdrawn or -1
-    float withdraw(const double& withdraw);
+    float withdraw(const double& withdraw, const string& pass);
 };
+
+#endif // !ACCOUNT_H
