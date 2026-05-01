@@ -9,6 +9,7 @@
 #include "Account.h"
 #include <iostream>
 #include <string>
+#include <cmath>
 
 using std::string;
 using std::endl;
@@ -90,5 +91,15 @@ void Account::displayAccount(const string& pass) const {
          << "INTEREST: " << getIntrest() << endl 
          << "BALANCE: $" << getBalance(pass) << endl
          << "------------------------------\n";
+  }
+}
+
+void Account::calculateInterest(const int& numYears, const string& pass) {
+  if (pass != password) {
+    cout << "Incorrect password.\n";
+    return;
+  }
+  else {
+    balance = balance * pow((1 + (interest / 100)), numYears);
   }
 }

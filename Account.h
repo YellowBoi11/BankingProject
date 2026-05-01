@@ -54,7 +54,7 @@ class Account {
     void displayAccount(const string& pass) const;
 
     // Will calculate how much interest you get and add it to the balance.
-    void calculateInterest(const int& numYears, const string& pass) const;
+    void calculateInterest(const int& numYears, const string& pass);
 
     // Deposits the money if it's positive
     void deposit(const double& deposit, const string& pass);
