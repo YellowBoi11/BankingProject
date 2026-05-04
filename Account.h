@@ -17,6 +17,7 @@ using std::string;
 class Account {
   private:
     string holder;
+    string name;
     string type;
     float interest;
     // Used always to edit things
@@ -30,7 +31,7 @@ class Account {
     Account(const string& inHolder, const string& inPassword);
 
     // Full constructor
-    Account(const string& inHolder, const int& inType, const string& inPassword);
+    Account(const string& inHolder, const string& inName, const int& inType, const string& inPassword);
 
     // Getters 
     string getHolder() const;
@@ -38,6 +39,8 @@ class Account {
     string getType() const;
 
     float getIntrest() const;
+
+    string getName() const;
 
     // Requires password
     float getBalance(const string& pass) const;
@@ -47,6 +50,8 @@ class Account {
 
     // Sets the type and interest with a switch-case
     void setType(const int& inType);
+
+    void setName(const string& inName);
 
     // Other methods 
 

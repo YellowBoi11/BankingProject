@@ -16,15 +16,16 @@ using std::endl;
 using std::cout;
 
 // Default constructor -> offloads
-Account::Account() : Account(" ", 0, " ") {}
+Account::Account() : Account(" ", " ", 0, " ") {}
 
 // Holder - Password constructor -> offloads 
-Account::Account(const string& inHolder, const string& inPassword) : Account(inHolder, 0, inPassword) {}
+Account::Account(const string& inHolder, const string& inPassword) : Account(inHolder, " ", 0, inPassword) {}
 
 // Full constructor 
-Account::Account(const string& inHolder, const int& inType, const string& inPassword) {
+Account::Account(const string& inHolder, const string& inName, const int& inType, const string& inPassword) {
   setHolder(inHolder);
   setType(inType);
+  setName(inName);
 
   // Must be manually set as there is no setter or getter for the password 
   password = inPassword;
@@ -41,6 +42,10 @@ string Account::getType() const {
 
 float Account::getIntrest() const {
   return interest;
+}
+
+string Account::getName() const {
+  return name;
 }
 
 float Account::getBalance(const string& pass) const {
@@ -76,6 +81,10 @@ void Account::setType(const int& inType) {
   }
 }
 
+void Account::setName(const string& inName) {
+  name = inName;
+}
+
 // Other methods 
 
 void Account::displayAccount(const string& pass) const {
@@ -87,6 +96,7 @@ void Account::displayAccount(const string& pass) const {
     cout.precision(2);
     cout << "------------------------------\n"
          << "HOLDER: " << getHolder() << endl
+         << "NAME: " << getName() << endl
          << "TYPE: " << getType() << endl
          << "INTEREST: " << getIntrest() << endl 
          << "BALANCE: $" << getBalance(pass) << endl
