@@ -98,7 +98,7 @@ void Account::displayAccount(const string& pass) const {
          << "HOLDER: " << getHolder() << endl
          << "NAME: " << getName() << endl
          << "TYPE: " << getType() << endl
-         << "INTEREST: " << getIntrest() << endl 
+         << "INTEREST: $" << getIntrest() << endl 
          << "BALANCE: $" << getBalance(pass) << endl
          << "------------------------------\n";
   }

@@ -57,7 +57,8 @@ int main () {
          << "[3]: remove an account\n"
          << "[4]: deposit to an account\n"
          << "[5]: withdraw from an account\n"
-         << "[6]: quit\n?";
+         << "[6]: calculate interest\n?"
+         << "[7]: quit\n";
 
     // Ensuring proper input
     while(!(cin >> iInput)) {
@@ -188,8 +189,32 @@ int main () {
         break;
       }
 
+    // Calculates all interest 
+    case 6: {
+      string passwd;
+      int years;
+
+      cout << "How many years of interest are you calculating\n?";
+      while(!(cin >> years)) {
+        std::cin.clear(); // Reset error flags
+        std::cin.ignore(); // Clear buffer
+        std::cout << "Invalid input. Please enter a float.\n";
+        continue;
+      }
+      
+
+      for (int pos = 0; pos < accounts.size(); pos++) {
+        cout << "Enter your password for account " << accounts.at(pos)->getName() << endl;;
+        cin.ignore();
+        getline(cin, passwd);
+        accounts.at(pos)->calculateInterest(years, passwd);
+        accounts.at(pos)->displayAccount(passwd);
+      }
+
+      break;
+    }
     // Confirms quit 
-    case 6: 
+    case 7: 
       cout << "Are you sure you would like to quit? [y/n]" << endl;
       cin >> cInput;
 
@@ -205,6 +230,10 @@ int main () {
         default:
           cout << "Invalid input. Try again.\n";
       }
+
+      break;
+    default:
+      cout << "Unrecognized input. Try again.\n";
     }
   }
   return 0;
