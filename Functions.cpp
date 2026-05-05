@@ -54,7 +54,6 @@ void createAccount(vector<Account*>& accounts, const string& userName) {
   std::transform(accName.begin(), accName.end(), accName.begin(), toupper);
 
   cout << "What is the password for this account? (you will not be able to change this, and it's caps sensitive)" << endl;
-  cin.ignore();
   getline(cin, passwd);
 
   Account* account = new Account(userName, accName, type, passwd);

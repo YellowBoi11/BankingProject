@@ -65,6 +65,7 @@ class Account {
     void deposit(const double& deposit, const string& pass);
 
     // Withdraws the money if it's available. Returns the amount withdrawn or -1
+    // Returns a float assuming this money will the withdrawn somewhere (it wont be).
     float withdraw(const double& withdraw, const string& pass);
 };
 

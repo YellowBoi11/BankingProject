@@ -113,3 +113,33 @@ void Account::calculateInterest(const int& numYears, const string& pass) {
     balance = balance * pow((1 + (interest / 100)), numYears);
   }
 }
+
+void Account::deposit(const double& deposit, const string& pass) {
+  if (pass != password) {
+    cout << "Incorrect password" << endl;
+    return;
+  }
+  if (deposit <= 0) {
+    cout << "Invalid deposit. Must be a non-zero positive number\n";
+    return;
+  }
+  balance += deposit;
+}
+
+float Account::withdraw(const double& withdraw, const string& pass) {
+  if (pass != password) {
+    cout << "Incorrect password" << endl;
+    return -1;
+  }
+  if (withdraw > balance) {
+    cout << "Invalid deposit. You cannot withdraw more than you have\n";
+    return -1;
+  }
+  if (withdraw <= 0) {
+    cout << "Invalid deposit. Must be a non-zero positive number\n";
+    return -1;
+  }
+
+  balance -= withdraw;
+  return withdraw;
+}

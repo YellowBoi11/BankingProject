@@ -130,7 +130,7 @@ int main () {
 
       // Tries to deposit to an account.
       case 4: {
-        float deposit;
+        double deposit;
         string passwd;
         cout << "Enter the accounts position:\n";
 
@@ -154,11 +154,13 @@ int main () {
         getline(cin, passwd);
         accounts.at(iInput)->deposit(deposit, passwd);
         accounts.at(iInput)->displayAccount(passwd);
+
+        break;
       }
 
       // Tries to withdraw from an account.
       case 5: {
-        float withdraw;
+        double withdraw;
         string passwd;
         cout << "Enter the accounts position:\n";
 
@@ -182,6 +184,8 @@ int main () {
         getline(cin, passwd);
         accounts.at(iInput)->withdraw(withdraw, passwd);
         accounts.at(iInput)->displayAccount(passwd);
+
+        break;
       }
 
     // Confirms quit 
