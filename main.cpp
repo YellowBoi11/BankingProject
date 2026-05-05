@@ -129,11 +129,79 @@ int main () {
       }
 
       // Tries to deposit to an account.
-      case 4:
+      case 4: {
+        float deposit;
+        string passwd;
+        cout << "Enter the accounts position:\n";
+
+        while(!(cin >> iInput)) {
+          std::cin.clear(); // Reset error flags
+          std::cin.ignore(); // Clear buffer
+          std::cout << "Invalid input. Please enter a number.\n";
+          continue;
+        }
+
+        cout << "Enter how much you would like to deposit.\n";
+        while(!(cin >> deposit)) {
+          std::cin.clear(); // Reset error flags
+          std::cin.ignore(); // Clear buffer
+          std::cout << "Invalid input. Please enter a float.\n";
+          continue;
+        }
+
+        cout << "Enter your password.\n";
+        cin.ignore();
+        getline(cin, passwd);
+        accounts.at(iInput)->deposit(deposit, passwd);
+        accounts.at(iInput)->displayAccount(passwd);
+      }
+
+      // Tries to withdraw from an account.
+      case 5: {
+        float withdraw;
+        string passwd;
+        cout << "Enter the accounts position:\n";
+
+        while(!(cin >> iInput)) {
+          std::cin.clear(); // Reset error flags
+          std::cin.ignore(); // Clear buffer
+          std::cout << "Invalid input. Please enter a number.\n";
+          continue;
+        }
+
+        cout << "Enter how much you would like to withdraw.\n";
+        while(!(cin >> withdraw)) {
+          std::cin.clear(); // Reset error flags
+          std::cin.ignore(); // Clear buffer
+          std::cout << "Invalid input. Please enter a float.\n";
+          continue;
+        }
+
+        cout << "Enter your password.\n";
+        cin.ignore();
+        getline(cin, passwd);
+        accounts.at(iInput)->withdraw(withdraw, passwd);
+        accounts.at(iInput)->displayAccount(passwd);
+      }
+
+    // Confirms quit 
+    case 6: 
+      cout << "Are you sure you would like to quit? [y/n]" << endl;
+      cin >> cInput;
+
+      switch (cInput) {
+        case 'y':
+        case 'Y':
+          cout << "Exiting program..." << endl;
+          return 0;
+        case 'n':
+        case 'N':
+          cout << "Canceling exit.\n";
+          break;
+        default:
+          cout << "Invalid input. Try again.\n";
+      }
     }
- 
-
   }
-
   return 0;
 }
