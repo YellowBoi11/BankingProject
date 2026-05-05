@@ -95,7 +95,7 @@ int main () {
         try {
           accounts.at(iInput)->displayAccount(passwd);
         }
-        catch (const std::logic_error& e) {
+        catch (const std::out_of_range& e) {
           cout << "Error: " << e.what() << endl;
         }
         break;
@@ -117,13 +117,14 @@ int main () {
           continue;
         }
 
+        // Catching out-of-range errors
         try {
           delete accounts.at(iInput);
 
           // Using pointer arithmatic to remove an account from the vector. 
           accounts.erase(accounts.begin() + iInput);
         }
-        catch (const std::logic_error& e) {
+        catch (const std::out_of_range& e) {
           cout << "Error: " << e.what() << endl;
         }
         break;
@@ -153,9 +154,15 @@ int main () {
         cout << "Enter your password.\n";
         cin.ignore();
         getline(cin, passwd);
-        accounts.at(iInput)->deposit(deposit, passwd);
-        accounts.at(iInput)->displayAccount(passwd);
 
+        // Catching out-of-range errors
+        try {
+          accounts.at(iInput)->deposit(deposit, passwd);
+          accounts.at(iInput)->displayAccount(passwd);
+        }
+        catch (const std::out_of_range& e) {
+          cout << "Error: " << e.what() << endl;
+        }
         break;
       }
 
@@ -183,8 +190,15 @@ int main () {
         cout << "Enter your password.\n";
         cin.ignore();
         getline(cin, passwd);
-        accounts.at(iInput)->withdraw(withdraw, passwd);
-        accounts.at(iInput)->displayAccount(passwd);
+
+        // Catching out-of-range errors
+        try {
+          accounts.at(iInput)->withdraw(withdraw, passwd);
+          accounts.at(iInput)->displayAccount(passwd);
+        }
+        catch (const std::out_of_range& e) {
+          cout << "Error: " << e.what() << endl;
+        }
 
         break;
       }
