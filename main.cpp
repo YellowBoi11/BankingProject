@@ -57,8 +57,8 @@ int main () {
          << "[3]: remove an account\n"
          << "[4]: deposit to an account\n"
          << "[5]: withdraw from an account\n"
-         << "[6]: calculate interest\n?"
-         << "[7]: quit\n";
+         << "[6]: calculate interest\n"
+         << "[7]: quit\n?";
 
     // Ensuring proper input
     while(!(cin >> iInput)) {
@@ -219,7 +219,11 @@ int main () {
 
       for (int pos = 0; pos < accounts.size(); pos++) {
         cout << "Enter your password for account " << accounts.at(pos)->getName() << endl;;
-        cin.ignore();
+
+        // Ignores last cin input buffer only on the first pass
+        if (pos == 0){
+          cin.ignore();
+        }
         getline(cin, passwd);
         accounts.at(pos)->calculateInterest(years, passwd);
         accounts.at(pos)->displayAccount(passwd);
