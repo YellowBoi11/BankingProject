@@ -98,7 +98,7 @@ void Account::displayAccount(const string& pass) const {
          << "HOLDER: " << getHolder() << endl
          << "NAME: " << getName() << endl
          << "TYPE: " << getType() << endl
-         << "INTEREST: $" << getIntrest() << endl 
+         << "INTEREST: %" << getIntrest() << endl 
          << "BALANCE: $" << getBalance(pass) << endl
          << "------------------------------\n";
   }
@@ -136,7 +136,7 @@ float Account::withdraw(const double& withdraw, const string& pass) {
     return -1;
   }
   if (withdraw <= 0) {
-    cout << "Invalid deposit. Must be a non-zero positive number\n";
+    cout << "Invalid withdraw. Must be a non-zero positive number\n";
     return -1;
   }
 
