@@ -13,7 +13,7 @@ using std::string;
 using std::vector;
 
 int main () {
-  // Allows methods to set floating-point-precisionn.
+  // Allows methods to set floating-point-precision.
   cout.setf(std::ios::fixed);
   cout.setf(std::ios::showpoint);
 
@@ -212,7 +212,7 @@ int main () {
       while(!(cin >> years)) {
         std::cin.clear(); // Reset error flags
         std::cin.ignore(); // Clear buffer
-        std::cout << "Invalid input. Please enter a float.\n";
+        std::cout << "Invalid input. Please enter an int.\n";
         continue;
       }
       
